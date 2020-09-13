@@ -17,6 +17,7 @@ class Input extends React.Component {
             <div>
                 <input
                     type={this.props.typeName}
+                    value={this.props.value}
                 />
             </div>
         );
@@ -56,10 +57,27 @@ class TimerBoard extends React.Component {
         );
     }
 
-    renderInput(typeName) {
+    renderInput() {
         return (
             <Input
-                typeName={typeName}
+                typeName="input"
+            />
+        );
+    }
+
+    renderDateInput() {
+        return (
+            <Input
+                typeName="date"
+            />
+        );
+    }
+
+    renderTimeInput(defaultValue) {
+        return (
+            <Input
+                typeName="time"
+                value={defaultValue}
             />
         );
     }
@@ -69,8 +87,9 @@ class TimerBoard extends React.Component {
             <div>
                 <div>
                     {this.renderLabel("Event Name")}
-                    {this.renderInput("input")}
-                    {this.renderInput("date")}
+                    {this.renderInput()}
+                    {this.renderDateInput()}
+                    {this.renderTimeInput("00:00:00")}
                 </div>
                 <div>
                     <TimerDisplay />
